@@ -23,8 +23,8 @@ const Parcours = () => {
     <div className="w-full sm:h-screen bg-yellow-50 flex flex-col items-center">
       <Navbar />
       <main className="flex-1 w-10/12 my-8">
-        <div className="sm:grid grid-cols-3 place-items-center gap-4 border p-4 box17 my-8">
-          <div className="clip-path-decagon flex justify-center h-[300px] sm:w-[300px] sm:h-[400px] bg-cover bg-center">
+        <div className="md:grid grid-cols-3 place-items-center gap-4 border p-4 box17 my-8">
+          <div className="clip-path-decagon flex justify-center h-[300px] w-full lg:w-[300px] lg:h-[400px] bg-cover bg-center">
             {/* <p className="text-white text-4xl  mt-8 text-yellow-50">Francine</p> */}
           </div>
           <div className="col-span-2">

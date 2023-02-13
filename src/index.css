@@ -9,8 +9,18 @@
     /* background-size: cover; */
   }
 
+  .box11 {
+    box-shadow: inset 0px 0px 5px 5px #ffd000;
+ }
+
   .box17 {
     box-shadow: 0 0 0 7px #ffd000,
                 0 0 0 14px #ffdd00,
                 0 0 0 21px #ffea00;
+  }
+
+  @media (max-width: 575.98px) {
+    .rows-20 {
+      rows: 10;
+    }
   }

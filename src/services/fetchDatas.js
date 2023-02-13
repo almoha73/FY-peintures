@@ -16,3 +16,11 @@ export const getParcours = async () => {
       console.log(error);
     }
   };
+
+  export const getMessage = async () => {
+    try {
+      return await getDocs(collection(db, "messages"));
+    } catch (error) {
+      console.log(error);
+    }
+  };
