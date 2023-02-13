@@ -58,7 +58,7 @@ const Contact = () => {
               htmlFor="comment"
               className="block text-xl mb-8 font-medium text-gray-700"
             >
-              Laisser un message pour mon Livre d'Or
+              Laisser un message sur mon Livre d'Or
             </label>
             <div className="w-full mb-8">
               <textarea
