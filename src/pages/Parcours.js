@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { getParcours } from "../services/fetchDatas";
 
 const Parcours = () => {
@@ -20,14 +21,14 @@ const Parcours = () => {
   console.log(parcours);
 
   return (
-    <div className="w-full sm:h-screen bg-yellow-50 flex flex-col items-center">
+    <div className="w-full h-auto sm:h-screen bg-yellow-50 flex flex-col items-center">
       <Navbar />
       <main className="flex-1 w-10/12 my-8">
-        <div className="md:grid grid-cols-3 place-items-center gap-4 border p-4 box17 my-8">
-          <div className="clip-path-decagon flex justify-center h-[300px] w-full lg:w-[300px] lg:h-[400px] bg-cover bg-center">
+        <div className="md:grid grid-cols-2 place-items-center gap-4 border p-4 box17 my-8">
+          <div className="clip-path-decagon flex justify-center h-[300px] w-11/12 sm:w-[400px] mx-auto md:w-[300px] lg:w-[400px] lg:h-[400px] bg-cover bg-center">
             {/* <p className="text-white text-4xl  mt-8 text-yellow-50">Francine</p> */}
           </div>
-          <div className="col-span-2">
+          <div className="col-span-1">
             <p>
               {" "}
               <span className="font-dancing text-xl">J</span>e suis Francine,
@@ -44,6 +45,7 @@ const Parcours = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

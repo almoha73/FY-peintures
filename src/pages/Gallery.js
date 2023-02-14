@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { db } from "../firebase";
 import { getGallerie } from "../services/fetchDatas";
-import { solid, regular } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { solid} from "@fortawesome/fontawesome-svg-core/import.macro";
 import { doc, setDoc } from "firebase/firestore";
 import uuid from "react-uuid";
 const Gallery = () => {
@@ -63,21 +64,21 @@ const Gallery = () => {
   return (
     <div className="w-full h-auto  bg-yellow-50 flex flex-col items-center justify-center">
       <Navbar />
-      <main className="w-10/12 h-auto  sm:columns-1 md:columns-3 2xl:columns-4 sm:gap-4 2xl:gap-6 box17 my-16 p-4 ">
+      <main className=" flex-1 w-11/12 h-auto  sm:columns-1 md:columns-3 xl:columns-4 sm:gap-4 2xl:gap-6 box17 my-16 p-4 space-y-4">
         {gallerie?.length > 0 &&
           gallerie?.map((elt) => (
             <figure
-              className="w-full rounded sm:w-[300px] md:w-auto sm:mx-auto shadow shadow-lg flex flex-col  flex-nowrap mb-8 p-2 "
+              className="w-full rounded  sm:w-[500px] md:w-auto sm:mx-auto shadow shadow-lg px-2 pt-2 bg-orange-100 "
               key={uuid()}
             >
               <img
                 src={elt.gallerie.href}
                 alt=""
-                className="w-full rounded aspect-auto shadow shadow-lg block"
+                className="w-full rounded sm:aspect-video sm:object-contain shadow shadow-lg"
               />
 
               <figcaption
-                className=" w-full h-8 flex items-center"
+                className=" w-full h-8 flex items-center "
                 key={uuid()}
               >
                 <FontAwesomeIcon
@@ -87,7 +88,7 @@ const Gallery = () => {
                       ? "text-xl cursor-pointer mx-4 text-red-500"
                       : "text-xl cursor-pointer mx-4 text-orange-500"
                   }
-                  // className=" text-xl cursor-pointer mx-4 text-orange-400"
+                  
                   onClick={() => handleLike(elt.key)}
                 />
                 <span>{likes[elt.key] || 0}</span>
@@ -95,6 +96,7 @@ const Gallery = () => {
             </figure>
           ))}
       </main>
+      <Footer/>
     </div>
   );
 };

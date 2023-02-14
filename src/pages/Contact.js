@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm} from "react-hook-form";
 import Modal from "modalagnes73";
-//import EmojiPicker from "emoji-picker-react";
 import "@tailwindcss/forms";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid} from "@fortawesome/fontawesome-svg-core/import.macro";
 
 const Contact = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -47,20 +49,31 @@ const Contact = () => {
           buttonbgHover="yellow-600"
         />
       )}
-      <div className="w-full h-screen sm:h-screen bg-yellow-50 flex flex-col items-center">
+      <div className="w-full h-auto bg-yellow-50 flex flex-col items-center">
         <Navbar />
-        <main className="flex w-10/12 justify-center items-center h-screen">
+        <main className="flex flex-col flex-1 w-10/12 justify-center items-center h-screen my-4 sm:my-8">
+          <a href="mailto:francine.yollant@netcourrier.com" className="flex items-center mb-4"><FontAwesomeIcon icon={solid("at")} className=" w-8 h-8 p-1 text-orange-500 rounded-lg"/><span>Mail</span></a>
+          <span>OU</span>
+          <hr />
+          <p className="mt-4 text-center font-dancing text-3xl sm:text-4xl mb-4">Laissez-moi un message sur mon livre d'or</p>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col sm:w-1/2 justify-center items-center"
           >
             <label
-              htmlFor="comment"
-              className="block text-xl mb-8 font-medium text-gray-700"
+              htmlFor="name"
+              className="block sm:text-xl text-center font-medium text-gray-700 sm:mb-4 mb-2"
             >
-              Laisser un message sur mon Livre d'Or
+              Nom
             </label>
-            <div className="w-full mb-8">
+            <input {...register("name", { required: true })} type="text" name="name" id="name" className="outline-none mb-4 rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500" />
+            <div className="w-full mb-8 ">
+            <label
+              htmlFor="comment"
+              className="block sm:text-xl text-center font-medium text-gray-700 sm:mb-4 mb-2"
+            >
+              Votre message
+            </label>
               <textarea
                 {...register("comment", { required: true })}
                 rows={rows}
@@ -81,6 +94,7 @@ const Contact = () => {
             </div>
           </form>
         </main>
+        <Footer />
       </div>
     </>
   );

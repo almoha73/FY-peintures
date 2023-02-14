@@ -25,10 +25,10 @@ export const getParcours = async () => {
     }
   };
 
-  // export const getLikes = async () => {
-  //   try {
-  //     return await getDocs(collection(db, "messages"));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  export const getValideMessage = async () => {
+    try {
+      return await getDocs(collection(db, "valideMessage"));
+    } catch (error) {
+      console.log(error);
+    }
+  };
