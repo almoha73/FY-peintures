@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { useForm, useController } from "react-hook-form";
+import { useForm} from "react-hook-form";
 import Modal from "modalagnes73";
-import EmojiPicker from "emoji-picker-react";
+//import EmojiPicker from "emoji-picker-react";
 import "@tailwindcss/forms";
 
 const Contact = () => {

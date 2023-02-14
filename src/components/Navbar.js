@@ -8,7 +8,7 @@ import uuid from "react-uuid";
 const menu = [
   { name: "Accueil", href: "/" },
   { name: "Mon parcours", href: "/parcours" },
-  { name: "Gallerie", href: "/gallery" },
+  { name: "Galerie", href: "/gallery" },
   { name: "Contact", href: "/contact" },
   { name: "Livre d'Or", href: "/commentaires" },
   
