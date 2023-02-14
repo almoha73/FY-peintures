@@ -42,7 +42,10 @@ const Gallery = () => {
 
   const handleLike = (id) => {
     setLikes((prevLikes) => {
-      const newLikes = { ...prevLikes, [id]: isLiked[id] ? (prevLikes[id] || 0) - 1 : (prevLikes[id] || 0) + 1 };
+      const newLikes = {
+        ...prevLikes,
+        [id]: isLiked[id] ? (prevLikes[id] || 0) - 1 : (prevLikes[id] || 0) + 1,
+      };
       const Ref = doc(db, "gallerie", id);
       console.log(Ref);
       setDoc(
@@ -58,27 +61,39 @@ const Gallery = () => {
   };
 
   return (
-    <div className="w-full h-auto  bg-yellow-50 flex flex-col items-center">
+    <div className="w-full h-auto  bg-yellow-50 flex flex-col items-center justify-center">
       <Navbar />
-      <main className="w-10/12 sm:columns-2 lg:columns-3 xl:columns-4 sm:gap-8 box17 p-4 my-16">
-        {gallerie?.length > 0  && (gallerie?.map((elt) => (
-          <div key={uuid()} className="w-full h-fit sm:w-80 mb-8 border border-4 rounded-lg shadow-md shadow-white">
-            <img
-            key={uuid()}
-              src={elt.gallerie.href}
-              alt=""
-              className="w-full rounded shadow shadow-lg block"
-            />
-            <div className=" w-full h-8 flex items-center" key={uuid()}>
-              <FontAwesomeIcon
-                icon={isLiked[elt.key] ? solid("heart") : regular("heart")}
-                className=" text-xl cursor-pointer mx-4"
-                onClick={() => handleLike(elt.key)}
+      <main className="w-10/12 h-auto  sm:columns-1 md:columns-3 2xl:columns-4 sm:gap-4 2xl:gap-6 box17 my-16 p-4 ">
+        {gallerie?.length > 0 &&
+          gallerie?.map((elt) => (
+            <figure
+              className="w-full rounded sm:w-[300px] md:w-auto sm:mx-auto shadow shadow-lg flex flex-col  flex-nowrap mb-8 p-2 "
+              key={uuid()}
+            >
+              <img
+                src={elt.gallerie.href}
+                alt=""
+                className="w-full rounded aspect-auto shadow shadow-lg block"
               />
-              <span>{likes[elt.key] || 0}</span>
-            </div>
-          </div>
-        )))}
+
+              <figcaption
+                className=" w-full h-8 flex items-center"
+                key={uuid()}
+              >
+                <FontAwesomeIcon
+                  icon={isLiked[elt.key] ? solid("heart") : solid("heart")}
+                  className={
+                    isLiked[elt.key]
+                      ? "text-xl cursor-pointer mx-4 text-red-500"
+                      : "text-xl cursor-pointer mx-4 text-orange-500"
+                  }
+                  // className=" text-xl cursor-pointer mx-4 text-orange-400"
+                  onClick={() => handleLike(elt.key)}
+                />
+                <span>{likes[elt.key] || 0}</span>
+              </figcaption>
+            </figure>
+          ))}
       </main>
     </div>
   );

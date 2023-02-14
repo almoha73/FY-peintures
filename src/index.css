@@ -3,6 +3,13 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
+*, ::after, ::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 .clip-path-decagon {
     clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
     background-image: url("https://firebasestorage.googleapis.com/v0/b/francine-94efd.appspot.com/o/Francine%2FFrancine.jpg?alt=media&token=81c24081-9a91-41d5-a0c2-7cc5e274756e");
@@ -11,6 +18,7 @@
 
   .box11 {
     box-shadow: inset 0px 0px 5px 5px #ffd000;
+   
  }
 
   .box17 {
@@ -19,8 +27,4 @@
                 0 0 0 21px #ffea00;
   }
 
-  @media (max-width: 575.98px) {
-    .rows-20 {
-      rows: 10;
-    }
-  }
+  
