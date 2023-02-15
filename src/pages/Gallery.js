@@ -85,20 +85,24 @@ const Gallery = () => {
               />
 
               <figcaption
-                className=" w-full h-8 flex items-center "
+                className=" w-11/12 mx-auto h-8 flex items-center justify-between"
                 key={uuid()}
               >
+                <div>
                 <FontAwesomeIcon
                   icon={isLiked[elt.key] ? solid("heart") : solid("heart")}
                   className={
                     isLiked[elt.key]
-                      ? "text-xl cursor-pointer mx-4 text-red-500"
-                      : "text-xl cursor-pointer mx-4 text-orange-500"
+                      ? "text-xl cursor-pointer mr-4 text-red-500"
+                      : "text-xl cursor-pointer mr-4 text-orange-500"
                   }
                   
                   onClick={() => handleLike(elt.key)}
                 />
                 <span>{likes[elt.key] || 0}</span>
+                </div>
+                <span>{elt.gallerie.name}</span>
+                
               </figcaption>
             </figure>
           ))}
