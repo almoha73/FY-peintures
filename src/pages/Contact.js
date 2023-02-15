@@ -49,7 +49,7 @@ const Contact = () => {
           buttonbgHover="yellow-600"
         />
       )}
-      <div className="w-full h-auto bg-yellow-50 flex flex-col items-center">
+      <div className="w-full h-auto sm:h-screen bg-yellow-50 flex flex-col items-center">
         <Navbar />
         <main className="flex flex-col flex-1 w-10/12 justify-center items-center h-screen my-4 sm:my-8 text-orange-900">
           <a href="mailto:francine.yollant@netcourrier.com" className="flex items-center mb-4"><FontAwesomeIcon icon={solid("at")} className=" w-8 h-8 p-1 text-orange-500 rounded-lg"/><span>Mail</span></a>
@@ -67,7 +67,7 @@ const Contact = () => {
               Nom
             </label>
             <input {...register("name", { required: true })} type="text" name="name" id="name" className="outline-none mb-4 rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500" />
-            <div className="w-full mb-8 ">
+            <div className="w-full mb-4 ">
             <label
               htmlFor="comment"
               className="block sm:text-xl text-center font-medium text-gray-700 sm:mb-4 mb-2 text-orange-900"
