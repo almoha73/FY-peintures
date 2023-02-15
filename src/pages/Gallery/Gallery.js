@@ -78,14 +78,14 @@ const Gallery = () => {
       <main className="gallery">
         {gallerie?.length > 0 &&
           gallerie?.map((elt) => (
-            <figure className="shadow shadow-lg bg-orange-100" key={uuid()}>
+            <figure className=" bg-orange-100" key={uuid()}>
               <img
                 src={elt.gallerie.href}
                 alt={elt.gallerie.name}
-                className="w-auto rounded shadow shadow-lg"
+                className=""
               />
 
-              <figcaption className="bg-orange-100 shadow shadow-lg rounded">
+              <figcaption className="bg-orange-100">
                 <div>
                   <FontAwesomeIcon
                     icon={isLiked[elt.key] ? solid("heart") : solid("heart")}
