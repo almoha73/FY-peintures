@@ -49,9 +49,9 @@ const Contact = () => {
           buttonbgHover="yellow-600"
         />
       )}
-      <div className="w-full h-auto sm:h-screen bg-yellow-50 flex flex-col items-center">
+      <div className="w-full h-auto sm:h-screen md:h-screen lg:h-auto bg-yellow-50 flex flex-col items-center">
         <Navbar />
-        <main className="flex flex-col flex-1 w-10/12 justify-center items-center h-screen my-4 sm:my-8 text-orange-900">
+        <main className="flex flex-col flex-1 w-10/12 justify-center items-center my-4 sm:my-8 text-orange-900">
           <a href="mailto:francine.yollant@netcourrier.com" className="flex items-center mb-4"><FontAwesomeIcon icon={solid("at")} className=" w-8 h-8 p-1 text-orange-500 rounded-lg"/><span>Mail</span></a>
           <span>OU</span>
           <hr />
