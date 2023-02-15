@@ -31,9 +31,9 @@ const Commentaires = () => {
         {message.length > 0 ? (message.map((elt) => (
           <div key={elt.key} className="box11 w-9/12 p-8 space-y-2 mb-2">
             
-            <p className="text-xl">Message de {elt.message.name}</p>
+            <p className="text-xl text-orange-900">Message de {elt.message.name}</p>
             <FontAwesomeIcon icon={solid("quote-left")} className="text-orange-500 h-8" />
-            <ReactMarkdown >{elt.message.comment}</ReactMarkdown>
+            <ReactMarkdown className="italic">{elt.message.comment}</ReactMarkdown>
             <FontAwesomeIcon icon={solid("quote-right")} className="float-right text-orange-500 h-8"/>
           </div>
         ))) : <></>}

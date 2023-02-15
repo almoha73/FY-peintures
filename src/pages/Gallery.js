@@ -9,8 +9,11 @@ import { doc, setDoc } from "firebase/firestore";
 import uuid from "react-uuid";
 const Gallery = () => {
   const [gallerie, setGallerie] = useState([]);
-  const [likes, setLikes] = useState();
+  const [likes, setLikes] = useState({});
   const [isLiked, setIsLiked] = useState({});
+
+  const totalLikes =  Object.values(likes).reduce((acc, value) => acc + value, 0) 
+
 
   useEffect(() => {
     const array = [];
@@ -25,7 +28,7 @@ const Gallery = () => {
     loadData();
   }, [gallerie.length]);
 
-  console.log(gallerie);
+  console.log(gallerie, likes);
 
   useEffect(() => {
     const loadLikes = async () => {
@@ -64,7 +67,11 @@ const Gallery = () => {
   return (
     <div className="w-full h-auto  bg-yellow-50 flex flex-col items-center justify-center">
       <Navbar />
-      <main className=" flex-1 w-11/12 h-auto  sm:columns-1 md:columns-3 xl:columns-4 sm:gap-4 2xl:gap-6 box17 my-16 p-4 space-y-4">
+      <div className="flex sm:my-8 mb-8 mt-4">
+      <span className="font-dancing text-2xl">Compteur de Likes : </span><span className="ml-4 text-2xl font bold">{totalLikes}</span>
+      </div>
+      
+      <main className=" flex-1 w-11/12 h-auto  sm:columns-1 md:columns-3 xl:columns-4 sm:gap-4 2xl:gap-6 box17 sm:my-8 p-4 space-y-4">
         {gallerie?.length > 0 &&
           gallerie?.map((elt) => (
             <figure

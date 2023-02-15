@@ -51,18 +51,18 @@ const Contact = () => {
       )}
       <div className="w-full h-auto bg-yellow-50 flex flex-col items-center">
         <Navbar />
-        <main className="flex flex-col flex-1 w-10/12 justify-center items-center h-screen my-4 sm:my-8">
+        <main className="flex flex-col flex-1 w-10/12 justify-center items-center h-screen my-4 sm:my-8 text-orange-900">
           <a href="mailto:francine.yollant@netcourrier.com" className="flex items-center mb-4"><FontAwesomeIcon icon={solid("at")} className=" w-8 h-8 p-1 text-orange-500 rounded-lg"/><span>Mail</span></a>
           <span>OU</span>
           <hr />
-          <p className="mt-4 text-center font-dancing text-3xl sm:text-4xl mb-4">Laissez-moi un message sur mon livre d'or</p>
+          <p className="mt-4 text-center font-dancing text-3xl sm:text-4xl mb-4 ">Laissez-moi un message sur mon livre d'or</p>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col sm:w-1/2 justify-center items-center"
           >
             <label
               htmlFor="name"
-              className="block sm:text-xl text-center font-medium text-gray-700 sm:mb-4 mb-2"
+              className="block sm:text-xl text-center font-medium text-gray-700 sm:mb-4 mb-2 text-orange-900"
             >
               Nom
             </label>
@@ -70,7 +70,7 @@ const Contact = () => {
             <div className="w-full mb-8 ">
             <label
               htmlFor="comment"
-              className="block sm:text-xl text-center font-medium text-gray-700 sm:mb-4 mb-2"
+              className="block sm:text-xl text-center font-medium text-gray-700 sm:mb-4 mb-2 text-orange-900"
             >
               Votre message
             </label>
