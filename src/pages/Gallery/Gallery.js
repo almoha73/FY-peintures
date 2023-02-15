@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import "./Gallery.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { db } from "../firebase";
-import { getGallerie } from "../services/fetchDatas";
-import { solid} from "@fortawesome/fontawesome-svg-core/import.macro";
+import { db } from "../../firebase";
+import { getGallerie } from "../../services/fetchDatas";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { doc, setDoc } from "firebase/firestore";
 import uuid from "react-uuid";
 const Gallery = () => {
@@ -12,8 +13,10 @@ const Gallery = () => {
   const [likes, setLikes] = useState({});
   const [isLiked, setIsLiked] = useState({});
 
-  const totalLikes =  Object.values(likes).reduce((acc, value) => acc + value, 0) 
-
+  const totalLikes = Object.values(likes).reduce(
+    (acc, value) => acc + value,
+    0
+  );
 
   useEffect(() => {
     const array = [];
@@ -67,47 +70,40 @@ const Gallery = () => {
   return (
     <div className="w-full h-auto  bg-yellow-50 flex flex-col items-center justify-center">
       <Navbar />
-      <div className="flex sm:my-8 mb-8 mt-4">
-      <span className="font-dancing text-2xl">Compteur de Likes : </span><span className="ml-4 text-2xl font bold">{totalLikes}</span>
+      <div className="flex sm:my-8 mb-8 mt-4 text-orange-900">
+        <span className="font-dancing text-2xl ">Compteur de Likes : </span>
+        <span className="ml-4 text-2xl font bold">{totalLikes}</span>
       </div>
-      
-      <main className=" flex-1 w-11/12 h-auto  sm:columns-1 md:columns-3 xl:columns-4 sm:gap-4 2xl:gap-6 box17 sm:mt-8 sm:mb-16 p-4 space-y-4">
+
+      <main className="gallery">
         {gallerie?.length > 0 &&
           gallerie?.map((elt) => (
-            <figure
-              className="w-full rounded  sm:w-[500px] md:w-auto sm:mx-auto shadow shadow-lg px-2 pt-2 bg-orange-100 "
-              key={uuid()}
-            >
+            <figure className="shadow shadow-lg bg-orange-100" key={uuid()}>
               <img
                 src={elt.gallerie.href}
                 alt={elt.gallerie.name}
-                className="w-full rounded sm:aspect-video sm:object-contain shadow shadow-lg"
+                className="w-auto rounded shadow shadow-lg"
               />
 
-              <figcaption
-                className=" w-11/12 mx-auto h-8 flex items-center justify-between"
-                key={uuid()}
-              >
+              <figcaption className="bg-orange-100 shadow shadow-lg rounded">
                 <div>
-                <FontAwesomeIcon
-                  icon={isLiked[elt.key] ? solid("heart") : solid("heart")}
-                  className={
-                    isLiked[elt.key]
-                      ? "text-xl cursor-pointer mr-4 text-red-500"
-                      : "text-xl cursor-pointer mr-4 text-orange-500"
-                  }
-                  
-                  onClick={() => handleLike(elt.key)}
-                />
-                <span>{likes[elt.key] || 0}</span>
+                  <FontAwesomeIcon
+                    icon={isLiked[elt.key] ? solid("heart") : solid("heart")}
+                    className={
+                      isLiked[elt.key]
+                        ? "text-xl cursor-pointer mr-4 text-red-500"
+                        : "text-xl cursor-pointer mr-4 text-orange-500"
+                    }
+                    onClick={() => handleLike(elt.key)}
+                  />
+                  <span>{likes[elt.key] || 0}</span>
                 </div>
                 <span>{elt.gallerie.name}</span>
-                
               </figcaption>
             </figure>
           ))}
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
