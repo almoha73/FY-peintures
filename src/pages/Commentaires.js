@@ -25,7 +25,7 @@ const Commentaires = () => {
   console.log(message);
 
   return (
-    <div className="w-full h-auto sm:h-screen bg-yellow-50 flex flex-col items-center">
+    <div className="w-full h-screen bg-yellow-50 flex flex-col items-center">
       <Navbar />
       <main className="my-8 flex flex-1 flex-col items-center">
         {message.length > 0 ? (message.map((elt) => (
