@@ -31,8 +31,6 @@ const Gallery = () => {
     loadData();
   }, [gallerie.length]);
 
-  console.log(gallerie, likes);
-
   useEffect(() => {
     const loadLikes = async () => {
       const data = await getGallerie();
@@ -54,7 +52,6 @@ const Gallery = () => {
         [id]: isLiked[id] ? (prevLikes[id] || 0) - 1 : (prevLikes[id] || 0) + 1,
       };
       const Ref = doc(db, "gallerie", id);
-      console.log(Ref);
       setDoc(
         Ref,
         {
