@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 const Home = () => {
   return (
     <div className="w-full h-screen bg-yellow-50 flex flex-col items-center ">
-      <Navbar />
       <main className="flex flex-1 flex-col justify-center w-10/12 items-center  ">
         <p className="text-4xl font-dancing">Artiste et handicap</p>
         <img

@@ -70,7 +70,7 @@ const Gallery = () => {
 
   return (
     <div className="w-full sm:h-auto h-auto  bg-yellow-50 flex flex-col items-center justify-center">
-      <Navbar />
+      
       <div className="flex sm:my-8 mb-8 mt-4 text-orange-900">
         <span className="font-dancing text-2xl ">Compteur de Likes : </span>
         <span className="ml-4 text-2xl font bold">{totalLikes}</span>
@@ -108,7 +108,7 @@ const Gallery = () => {
             </figure>
           ))}
       </main>
-      <Footer />
+      
     </div>
   );
 };

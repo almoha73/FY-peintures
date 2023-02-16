@@ -22,7 +22,6 @@ const Parcours = () => {
 
   return (
     <div className="w-full h-auto sm:h-screen bg-yellow-50 flex flex-col items-center">
-      <Navbar />
       <main className="flex-1 w-10/12 my-8">
         <div className="md:grid grid-cols-2 place-items-center gap-4 border p-4 box17 my-8">
           <div className="clip-path-decagon flex justify-center h-[300px] w-11/12 sm:w-[400px] mx-auto md:w-[300px] lg:w-[400px] lg:h-[400px] bg-cover bg-center">
@@ -45,7 +44,7 @@ const Parcours = () => {
           </div>
         </div>
       </main>
-      <Footer />
+      
     </div>
   );
 };

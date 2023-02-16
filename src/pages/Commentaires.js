@@ -26,7 +26,7 @@ const Commentaires = () => {
 
   return (
     <div className="w-full h-screen bg-yellow-50 flex flex-col items-center">
-      <Navbar />
+      
       <main className="my-8 flex flex-1 flex-col items-center">
         {message.length > 0 ? (message.map((elt) => (
           <div key={elt.key} className="box11 w-9/12 p-8 space-y-2 mb-2">
@@ -38,7 +38,7 @@ const Commentaires = () => {
           </div>
         ))) : <></>}
       </main>
-      <Footer />
+      
     </div>
   );
 };
