@@ -8,6 +8,9 @@ import { getGallerie } from "../../services/fetchDatas";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { doc, setDoc } from "firebase/firestore";
 import uuid from "react-uuid";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 const Gallery = () => {
   const [gallerie, setGallerie] = useState([]);
   const [likes, setLikes] = useState({});
@@ -60,6 +63,7 @@ const Gallery = () => {
         { merge: true }
       );
       setIsLiked({ ...isLiked, [id]: !isLiked[id] });
+
       return newLikes;
     });
   };
@@ -75,11 +79,15 @@ const Gallery = () => {
       <main className="gallery">
         {gallerie?.length > 0 &&
           gallerie?.map((elt) => (
-            <figure className=" bg-orange-100" key={uuid()}>
-              <img
+            <figure
+              className=" bg-orange-100 flex flex-col w-full h-auto"
+              key={uuid()}
+            >
+              <LazyLoadImage
                 src={elt.gallerie.href}
                 alt={elt.gallerie.name}
-                className=""
+                effect="blur"
+                className="object-contain w-full h-[270px] p-2 block "
               />
 
               <figcaption className="bg-orange-100">
