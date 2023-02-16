@@ -8,11 +8,14 @@ import { doc, setDoc } from "firebase/firestore";
 import uuid from "react-uuid";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import Spinner from "../Spinner/Spinner";
+
 
 const Gallery = () => {
   const [gallerie, setGallerie] = useState([]);
   const [likes, setLikes] = useState({});
   const [isLiked, setIsLiked] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const totalLikes = Object.values(likes).reduce(
     (acc, value) => acc + value,
@@ -34,6 +37,7 @@ const Gallery = () => {
 
   useEffect(() => {
     const loadLikes = async () => {
+      setIsLoading(true);
       const data = await getGallerie();
       const newLikes = {};
       await data.forEach((query) => {
@@ -42,6 +46,7 @@ const Gallery = () => {
         newLikes[id] = likes;
       });
       setLikes(newLikes);
+      setIsLoading(false);
     };
     loadLikes();
   }, []);
@@ -67,6 +72,8 @@ const Gallery = () => {
   };
 
   return (
+    <>
+    {isLoading && <Spinner />}
     <div className="w-full sm:h-auto h-auto  bg-yellow-50 flex flex-col items-center justify-center">
       
       <div className="flex sm:my-8 mb-8 mt-4 text-orange-900">
@@ -75,6 +82,7 @@ const Gallery = () => {
       </div>
 
       <main className="gallery">
+      
         {gallerie?.length > 0 &&
           gallerie?.map((elt) => (
             <figure
@@ -108,6 +116,7 @@ const Gallery = () => {
       </main>
       
     </div>
+    </>
   );
 };
 
