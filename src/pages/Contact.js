@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm} from "react-hook-form";
