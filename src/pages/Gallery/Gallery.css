@@ -16,13 +16,6 @@
   border-top-right-radius: 10px;
 }
 
-  /* .gallery-img {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-  } */
-
   .gallery figcaption {
    
     display: flex;
