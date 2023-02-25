@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./Gallery.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { db } from "../../firebase";
 import { getGallerie } from "../../services/fetchDatas";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { doc, setDoc } from "firebase/firestore";
 import uuid from "react-uuid";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Spinner from "../Spinner/Spinner";
-
+import InputSelect from "../../components/InputSelect";
+import Card from "../../components/Card";
 
 const Gallery = () => {
   const [gallerie, setGallerie] = useState([]);
   const [likes, setLikes] = useState({});
   const [isLiked, setIsLiked] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [sortBy, setSortBy] = useState("Popularité décroissante");
 
   const totalLikes = Object.values(likes).reduce(
     (acc, value) => acc + value,
@@ -33,7 +32,7 @@ const Gallery = () => {
       setGallerie(array);
     };
     loadData();
-  }, [gallerie.length]);
+  }, []);
 
   useEffect(() => {
     const loadLikes = async () => {
@@ -71,51 +70,68 @@ const Gallery = () => {
     });
   };
 
+  // const handleSortBy = (event) => {
+  //   setSortBy(event.target.value);
+  // };
+
+  const sortGallerie = (gallerie, sortBy) => {
+    switch (sortBy) {
+      case "Tri par nom (asc)":
+        return gallerie.sort((a, b) =>
+          a.gallerie.name
+            .toLowerCase()
+            .localeCompare(b.gallerie.name.toLowerCase())
+        );
+      case "Tri par nom (desc)":
+        return gallerie.sort((a, b) =>
+          b.gallerie.name
+            .toLowerCase()
+            .localeCompare(a.gallerie.name.toLowerCase())
+        );
+      case "Popularité croissante":
+        return gallerie.sort((a, b) => a.gallerie.likes - b.gallerie.likes);
+
+      case "Popularité décroissante":
+        return gallerie.sort((a, b) => b.gallerie.likes - a.gallerie.likes);
+      default:
+        return gallerie;
+    }
+  };
+
+  const options = [
+    "Popularité décroissante",
+    "Popularité croissante",
+    "Tri par nom (asc)",
+    "Tri par nom (desc)",
+  ];
+
+  console.log(gallerie);
   return (
     <>
-    {isLoading && <Spinner />}
-    <div className="w-full sm:h-auto h-auto  bg-yellow-50 flex flex-col items-center justify-center">
-      
-      <div className="flex sm:my-8 mb-8 mt-4 text-orange-900">
-        <span className="font-dancing text-2xl ">Compteur de Likes : </span>
-        <span className="ml-4 text-2xl font bold">{totalLikes}</span>
-      </div>
+      {isLoading && <Spinner />}
+      <div className="w-full sm:h-auto h-auto  bg-yellow-50 flex flex-col items-center justify-center">
+        <div className="flex sm:my-8 mb-8 mt-4 text-orange-900">
+          <span className="font-dancing text-2xl ">Compteur de Likes : </span>
+          <span className="ml-4 text-2xl font bold">{totalLikes}</span>
+        </div>
+        <div className="flex justify-center items-center mb-4">
+        <InputSelect options={options} selectedOption={sortBy} onSelect={setSortBy} />
 
-      <main className="gallery">
-      
-        {gallerie?.length > 0 &&
-          gallerie?.map((elt) => (
-            <figure
-              className=" bg-orange-100 flex flex-col w-full h-auto"
-              key={uuid()}
-            >
-              <LazyLoadImage
-                src={elt.gallerie.href}
-                alt={elt.gallerie.name}
-                effect="blur"
-                className="object-contain w-full h-[270px] p-2 block "
+        </div>
+        <main className="gallery">
+          {gallerie?.length > 0 &&
+            sortGallerie(gallerie, sortBy)?.map((elt) => (
+              <Card
+                key={uuid()}
+                imageUrl={elt.gallerie.href}
+                imageAlt={elt.gallerie.name}
+                likesCount={likes[elt.key] || 0}
+                isLiked={isLiked[elt.key]}
+                onLike={() => handleLike(elt.key)}
               />
-
-              <figcaption className="bg-orange-100">
-                <div>
-                  <FontAwesomeIcon
-                    icon={isLiked[elt.key] ? solid("heart") : solid("heart")}
-                    className={
-                      isLiked[elt.key]
-                        ? "text-xl cursor-pointer mr-4 text-red-500"
-                        : "text-xl cursor-pointer mr-4 text-orange-500"
-                    }
-                    onClick={() => handleLike(elt.key)}
-                  />
-                  <span>{likes[elt.key] || 0}</span>
-                </div>
-                <span>{elt.gallerie.name}</span>
-              </figcaption>
-            </figure>
-          ))}
-      </main>
-      
-    </div>
+            ))}
+        </main>
+      </div>
     </>
   );
 };
