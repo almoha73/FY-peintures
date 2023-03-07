@@ -72,13 +72,13 @@ const Gallery = () => {
 
   const sortGallerie = (gallerie, sortBy) => {
     switch (sortBy) {
-      case "Tri par nom (asc)":
+      case "Tri par nom ↑":
         return gallerie.sort((a, b) =>
           a.gallerie.name
             .toLowerCase()
             .localeCompare(b.gallerie.name.toLowerCase())
         );
-      case "Tri par nom (desc)":
+      case "Tri par nom ↓":
         return gallerie.sort((a, b) =>
           b.gallerie.name
             .toLowerCase()
@@ -95,10 +95,10 @@ const Gallery = () => {
   };
 
   const options = [
-    "Popularité décroissante",
-    "Popularité croissante",
-    "Tri par nom (↓)",
-    "Tri par nom (↑)",
+    {option:"Popularité décroissante", id: uuid()},
+    {option:"Popularité croissante", id: uuid()},
+    {option:"Tri par nom ↓", id: uuid()},
+    {option:"Tri par nom ↑", id: uuid()},
   ];
 
   console.log(gallerie);

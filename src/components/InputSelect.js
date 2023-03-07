@@ -41,12 +41,12 @@ export default function InputSelect({options, selectedOption, onSelect}) {
                         'relative cursor-default select-none py-2 pl-3 pr-9'
                       )
                     }
-                    value={option}
+                    value={option.option}
                   >
                     {({ selected, active }) => (
                       <>
                         <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
-                          {option}
+                          {option.option}
                         </span>
 
                         {selected ? (
