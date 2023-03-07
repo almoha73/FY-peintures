@@ -16,7 +16,7 @@ function App() {
    // Check if the current page is the home page
    const isHomePage = location.pathname === '/';
   return (
-    <div className="App">
+    <div className="App" >
       <Suspense fallback={<Spinner />}>
       <Navbar />
         <Routes>

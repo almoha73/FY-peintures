@@ -8,6 +8,9 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import Spinner from "../Spinner/Spinner";
 import InputSelect from "../../components/InputSelect";
 import Card from "../../components/Card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid} from "@fortawesome/fontawesome-svg-core/import.macro";
+
 
 const Gallery = () => {
   const [gallerie, setGallerie] = useState([]);
@@ -15,7 +18,7 @@ const Gallery = () => {
   const [isLiked, setIsLiked] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [sortBy, setSortBy] = useState("Popularité décroissante");
-
+  const [showScroll, setShowScroll] = useState(false);
   const totalLikes = Object.values(likes).reduce(
     (acc, value) => acc + value,
     0
@@ -95,13 +98,32 @@ const Gallery = () => {
   };
 
   const options = [
-    {option:"Popularité décroissante", id: uuid()},
-    {option:"Popularité croissante", id: uuid()},
-    {option:"Tri par nom ↓", id: uuid()},
-    {option:"Tri par nom ↑", id: uuid()},
+    { option: "Popularité décroissante", id: uuid() },
+    { option: "Popularité croissante", id: uuid() },
+    { option: "Tri par nom ↓", id: uuid() },
+    { option: "Tri par nom ↑", id: uuid() },
   ];
 
   console.log(gallerie);
+
+  const checkScrollTop = () => {
+    if (!showScroll && window.pageYOffset > 200){
+      setShowScroll(true)
+    } else if (showScroll && window.pageYOffset <= 200){
+      setShowScroll(false)
+    }
+  };
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", checkScrollTop);
+    return () => {
+      window.removeEventListener("scroll", checkScrollTop);
+    };
+  });
   return (
     <>
       {isLoading && <Spinner />}
@@ -111,8 +133,11 @@ const Gallery = () => {
           <span className="ml-4 text-2xl font bold">{totalLikes}</span>
         </div>
         <div className="flex justify-center items-center mb-4">
-        <InputSelect options={options} selectedOption={sortBy} onSelect={setSortBy} />
-
+          <InputSelect
+            options={options}
+            selectedOption={sortBy}
+            onSelect={setSortBy}
+          />
         </div>
         <main className="gallery">
           {gallerie?.length > 0 &&
@@ -127,6 +152,19 @@ const Gallery = () => {
               />
             ))}
         </main>
+        <div
+          className="scrollTop"
+          onClick={scrollTop}
+          style={{
+            display: showScroll ? "flex" : "none",
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            zIndex: "999",
+          }}
+        >
+          <FontAwesomeIcon icon={solid("arrow-up")} className="text-orange-500 h-8" />
+        </div>
       </div>
     </>
   );

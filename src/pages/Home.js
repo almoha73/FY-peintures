@@ -4,7 +4,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="w-full h-screen bg-yellow-50 flex flex-col items-center ">
+    <div className="w-full bg-yellow-50 flex flex-col items-center " style={{minHeight: "calc(100vh - 64px)"}}>
       <main className="flex flex-1 flex-col justify-center w-10/12 items-center  ">
         <p className="text-4xl font-dancing">Artiste et handicap</p>
         <img
