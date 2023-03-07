@@ -163,7 +163,7 @@ const Gallery = () => {
             zIndex: "999",
           }}
         >
-          <FontAwesomeIcon icon={solid("arrow-up")} className="text-orange-500 h-8" />
+          <FontAwesomeIcon icon={solid("arrow-up")} className="text-orange-500 h-8 cursor-pointer" />
         </div>
       </div>
     </>
