@@ -97,8 +97,8 @@ const Gallery = () => {
   const options = [
     "Popularité décroissante",
     "Popularité croissante",
-    "Tri par nom (asc)",
-    "Tri par nom (desc)",
+    "Tri par nom (↓)",
+    "Tri par nom (↑)",
   ];
 
   console.log(gallerie);
