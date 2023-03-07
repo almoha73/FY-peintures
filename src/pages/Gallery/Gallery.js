@@ -70,10 +70,6 @@ const Gallery = () => {
     });
   };
 
-  // const handleSortBy = (event) => {
-  //   setSortBy(event.target.value);
-  // };
-
   const sortGallerie = (gallerie, sortBy) => {
     switch (sortBy) {
       case "Tri par nom (asc)":
