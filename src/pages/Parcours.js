@@ -63,7 +63,7 @@ const Parcours = () => {
             l'Amicale Laïque de la Glacière à Mérignac. Il est animé par un super professeur. <br />  <span className="font-dancing text-xl ">N</span>ous
             sommes huit personnes mais je suis la seule en situation de handicap
             (enfin, handicap visible!!!). Pour m'aider j'ai des auxiliaires de
-            vie, Célia et Estelle. Elle m’aident pour me préparer moi, préparer
+            vie, Célia et Estelle. Elles m’aident pour me préparer moi, préparer
             tout mon matériel, et me tourner les toiles quand j’en ai besoin,
             car j’ai la facilité de savoir peindre dans tous les sens !!{" "}
           </p>
