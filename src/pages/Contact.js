@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
-import { useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Modal from "modalagnes73";
 import "@tailwindcss/forms";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid} from "@fortawesome/fontawesome-svg-core/import.macro";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 const Contact = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -15,6 +15,9 @@ const Contact = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
+      // Ajout du champ timestamp avec la valeur du serveur Firestore
+      data.timestamp = serverTimestamp();
+
       const docRef = await addDoc(collection(db, "messages"), data);
       console.log("Document written with ID: ", docRef.id);
       window.scrollTo(0, 0);
@@ -48,12 +51,22 @@ const Contact = () => {
         />
       )}
       <div className="w-full h-auto sm:h-screen md:h-screen lg:h-auto bg-yellow-50 flex flex-col items-center">
-        
         <main className="flex flex-col flex-1 w-10/12 justify-center items-center my-4 sm:my-8 text-orange-900">
-          <a href="mailto:francine.yollant@netcourrier.com" className="flex items-center mb-4"><FontAwesomeIcon icon={solid("at")} className=" w-8 h-8 p-1 text-orange-500 rounded-lg"/><span>Mail</span></a>
+          <a
+            href="mailto:francine.yollant@netcourrier.com"
+            className="flex items-center mb-4"
+          >
+            <FontAwesomeIcon
+              icon={solid("at")}
+              className=" w-8 h-8 p-1 text-orange-500 rounded-lg"
+            />
+            <span>Mail</span>
+          </a>
           <span>OU</span>
           <hr />
-          <p className="mt-4 text-center font-dancing text-3xl sm:text-4xl mb-4 ">Laissez-moi un message sur mon livre d'or</p>
+          <p className="mt-4 text-center font-dancing text-3xl sm:text-4xl mb-4 ">
+            Laissez-moi un message sur mon livre d'or
+          </p>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col sm:w-1/2 justify-center items-center"
@@ -64,14 +77,20 @@ const Contact = () => {
             >
               Nom
             </label>
-            <input {...register("name", { required: true })} type="text" name="name" id="name" className="outline-none mb-4 rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500" />
+            <input
+              {...register("name", { required: true })}
+              type="text"
+              name="name"
+              id="name"
+              className="outline-none mb-4 rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500"
+            />
             <div className="w-full mb-4 ">
-            <label
-              htmlFor="comment"
-              className="block sm:text-xl text-center font-medium text-gray-700 sm:mb-4 mb-2 text-orange-900"
-            >
-              Votre message
-            </label>
+              <label
+                htmlFor="comment"
+                className="block sm:text-xl text-center font-medium text-gray-700 sm:mb-4 mb-2 text-orange-900"
+              >
+                Votre message
+              </label>
               <textarea
                 {...register("comment", { required: true })}
                 rows={rows}
@@ -92,7 +111,6 @@ const Contact = () => {
             </div>
           </form>
         </main>
-        
       </div>
     </>
   );
