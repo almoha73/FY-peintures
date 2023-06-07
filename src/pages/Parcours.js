@@ -71,8 +71,10 @@ const Parcours = () => {
           {
             
             parcours.map((elt) => (
-              <img className="w-80 rounded-lg md:w-[400px] shadow-lg max-h-96 object-cover" key={elt.key} src={elt.parcours.href} alt={elt.parcours.name} />
+              // si elt.parcours.href contient "JPG" alors on affiche une image sinon on affiche la vidéo
+              elt.parcours.href.includes("JPG") ? <img className="w-80 rounded-lg md:w-[400px] shadow-lg max-h-96 object-cover" key={elt.key} src={elt.parcours.href} alt={elt.parcours.name} /> : <video className="w-80 rounded-lg md:w-[400px] shadow-lg max-h-96 object-cover" key={elt.key} src={elt.parcours.href} alt={elt.parcours.name} controls></video>
             ))
+            
           }
           </div>
           
