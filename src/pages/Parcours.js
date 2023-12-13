@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getParcours } from "../services/fetchDatas";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Parcours = () => {
   const [parcours, setParcours] = useState([]);
@@ -22,6 +24,7 @@ const Parcours = () => {
 
   return (
     <div className="w-full min-h-screen bg-yellow-50 flex flex-col items-center">
+      <Navbar />
       <main className="flex-1 w-10/12 my-8">
         <h1 className="font-dancing text-2xl lg:text-4xl text-center mb-8">
           Comment vivre sa passion malgré un lourd handicap
@@ -80,6 +83,7 @@ const Parcours = () => {
           
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

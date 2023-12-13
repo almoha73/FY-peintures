@@ -6,6 +6,8 @@ import Modal from "modalagnes73";
 import "@tailwindcss/forms";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Contact = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -51,6 +53,7 @@ const Contact = () => {
         />
       )}
       <div className="w-full h-auto sm:h-screen md:h-screen lg:h-auto bg-yellow-50 flex flex-col items-center">
+        <Navbar />
         <main className="flex flex-col flex-1 w-10/12 justify-center items-center my-4 sm:my-8 text-orange-900">
           <a
             href="mailto:francine.yollant@netcourrier.com"
@@ -111,6 +114,7 @@ const Contact = () => {
             </div>
           </form>
         </main>
+        <Footer />
       </div>
     </>
   );

@@ -3,6 +3,8 @@ import { getValideMessage } from "../services/fetchDatas";
 import ReactMarkdown from "react-markdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid} from "@fortawesome/fontawesome-svg-core/import.macro";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Commentaires = () => {
   const [message, setMessage] = useState([]);
@@ -27,8 +29,9 @@ const Commentaires = () => {
    return (
     <div
       className="w-full bg-yellow-50 flex flex-col items-center"
-      style={{ minHeight: 'calc(100vh - 128px)' }}
+  
     >
+      <Navbar />
       <main className="box11 w-11/12 my-8 flex flex-1 flex-col items-center">
         {message.length > 0 &&
           message.map((elt) => (
@@ -53,6 +56,7 @@ const Commentaires = () => {
             </React.Fragment>
           ))}
       </main>
+      <Footer />
     </div>
   );
 };

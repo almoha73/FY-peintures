@@ -5,30 +5,31 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 const Card = ({ imageUrl, imageAlt, likesCount, isLiked, onLike }) => {
   return (
-    <figure className=" bg-orange-100 flex flex-col w-full h-auto">
-      <LazyLoadImage
-        src={imageUrl}
-        alt={imageAlt}
-        effect="blur"
-        className="object-contain w-full h-[270px] p-2 block "
-      />
+    <div className="">
+      <div className="figure flex flex-col relative w-[300px] h-[400px] overflow-hidden bg-orange-100 ">
+        <LazyLoadImage
+          src={imageUrl}
+          alt={imageAlt}
+          className=" w-full  sm:w-80 mb-8 image"
+        />
 
-      <figcaption className="bg-orange-100">
-        <div>
-          <FontAwesomeIcon
-            icon={isLiked ? solid("heart") : solid("heart")}
-            className={
-              isLiked
-                ? `text-xl cursor-pointer mr-4 text-red-500`
-                : `text-orange-500 cursor-pointer mr-4 `
-            }
-            onClick={onLike}
-          />
-          <span>{likesCount}</span>
+        <div className="figcaption bg-orange-100 flex justify-between w-full p-1 h-8 absolute bottom-0">
+          <div className=" p-1 h-6 ">
+            <FontAwesomeIcon
+              icon={isLiked ? solid("heart") : solid("heart")}
+              className={
+                isLiked
+                  ? `text-xl cursor-pointer mr-4 text-red-500`
+                  : `text-orange-500 cursor-pointer mr-4 `
+              }
+              onClick={onLike}
+            />
+            <span>{likesCount}</span>
+          </div>
+          <span className="">{imageAlt}</span>
         </div>
-        <span>{imageAlt}</span>
-      </figcaption>
-    </figure>
+      </div>
+    </div>
   );
 };
 

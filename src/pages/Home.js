@@ -1,10 +1,13 @@
 import React from "react";
+import Navbar from "../components/Navbar";
+
 
 
 
 const Home = () => {
   return (
-    <div className="w-full bg-yellow-50 flex flex-col items-center " style={{minHeight: "calc(100vh - 64px)"}}>
+    <div className="w-full bg-yellow-50 flex flex-col items-center min-h-screen">
+      <Navbar />
       <main className="flex flex-1 flex-col justify-center w-10/12 items-center  ">
         <p className="text-4xl font-dancing">Artiste et handicap</p>
         <img
@@ -12,6 +15,7 @@ const Home = () => {
           alt=""
         />
       </main>
+     
     </div>
   );
 };
