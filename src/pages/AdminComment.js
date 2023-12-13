@@ -67,8 +67,8 @@ const AdminComment = () => {
 
   return (
     <div
-      className="w-full bg-yellow-50 flex flex-col items-center"
-      style={{ minHeight: "calc(100vh - 128px)" }}
+      className="w-full bg-yellow-50 flex flex-col items-center min-h-screen"
+      
     >
       <Navbar />
       <main className="box11 w-11/12 my-8 flex flex-1 flex-col items-center">
